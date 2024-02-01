@@ -25,7 +25,7 @@ const getSingle = async (req, res) => {
     });
 };
 
-const createbook = async (req, res) => {
+const createBook = async (req, res) => {
     //#swagger.tags=['Books']
     //#swagger.summary= Create a new book
     const books = {
@@ -45,7 +45,7 @@ const createbook = async (req, res) => {
     }
 };
 
-const updatebook = async (req, res) => {
+const updateBook = async (req, res) => {
     //#swagger.tags=['Books']
     //#swagger.summary= Modify a book by id
     if (!ObjectId.isValid(req.params.id)) {
@@ -69,7 +69,7 @@ const updatebook = async (req, res) => {
     }
 };
 
-const deletebook = async (req, res) => {
+const deleteBook = async (req, res) => {
     //#swagger.tags=['Books']
     //#swagger.summary= Delete a book by id
     if (!ObjectId.isValid(req.params.id)) {
@@ -87,7 +87,7 @@ const deletebook = async (req, res) => {
 module.exports = {
     getAll,
     getSingle,
-    createbook,
-    updatebook,
-    deletebook
+    createBook,
+    updateBook,
+    deleteBook
 }
