@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const teamController = require('../controllers/team-members');
+const usersController = require('../controllers/users');
 const validation = require('../middleware/validate');
+const {isAuthenticated} = require("../middleware/authenticate")
 
-router.get('/', teamController.getAll);
-router.get('/:id', teamController.getSingle);
-router.post('/', validation.saveTeamMem,teamController.createTeamMem);
-router.put('/:id', validation.saveTeamMem, teamController.updateTeamMem);
-router.delete('/:id', validation.saveTeamMem, teamController.deleteTeamMem);
+router.get('/', isAuthenticated, usersController.getAll);
+router.get('/:id', isAuthenticated, usersController.getSingle);
+router.post('/', isAuthenticated, validation.saveUser,usersController.createUser);
+router.put('/:id', isAuthenticated, validation.saveUser, usersController.updateUser);
+router.delete('/:id', isAuthenticated, validation.saveUser, usersController.deleteUser);
 
 
 module.exports = router;

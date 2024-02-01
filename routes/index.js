@@ -1,4 +1,5 @@
 const router = require ('express').Router();
+const passport = require('passport');
 
 router.use('/', require('./swagger'));
 
@@ -7,9 +8,10 @@ router.use('/', require('./swagger'));
 //     res.send('Hello World');
 // });
 
-router.use('/projects', require('./projects'));
-router.use('/tasks', require('./tasks'));
-router.use('/team-members', require('./team-members'));
+router.use('/authors', require('./authors'));
+router.use('/books', require('./books'));
+router.use('/loans', require('./loans'));
+router.use('/users', require('./users'));
 
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 

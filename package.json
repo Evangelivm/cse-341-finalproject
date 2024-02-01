@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Evangelivm/cse-341-project2.git"
+    "url": "git+https://github.com/Evangelivm/cse-341-finalproject.git"
   },
   "author": "Devy Salomon",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Evangelivm/cse-341-project2/issues"
+    "url": "https://github.com/Evangelivm/cse-341-finalproject/issues"
   },
-  "homepage": "https://github.com/Evangelivm/cse-341-project2#readme",
+  "homepage": "https://github.com/Evangelivm/cse-341-finalproject#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
