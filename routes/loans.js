@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const tasksController = require('../controllers/tasks');
+const loansController = require('../controllers/loans');
 const validation = require('../middleware/validate');
 
-router.get('/', tasksController.getAll);
-router.get('/:id', tasksController.getSingle);
-router.post('/', validation.saveTask , tasksController.createTask);
-router.put('/:id', validation.saveTask , tasksController.updateTask);
-router.delete('/:id', tasksController.deleteTask);
+router.get('/', loansController.getAll);
+router.get('/:id', loansController.getSingle);
+router.post('/', validation.saveLoan , loansController.createLoan);
+router.put('/:id', validation.saveLoan , loansController.updateLoan);
+router.delete('/:id', loansController.deleteLoan);
 
 module.exports = router;

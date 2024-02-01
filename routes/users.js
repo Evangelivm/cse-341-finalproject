@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const teamController = require('../controllers/team-members');
+const usersController = require('../controllers/users');
 const validation = require('../middleware/validate');
 
-router.get('/', teamController.getAll);
-router.get('/:id', teamController.getSingle);
-router.post('/', validation.saveTeamMem,teamController.createTeamMem);
-router.put('/:id', validation.saveTeamMem, teamController.updateTeamMem);
-router.delete('/:id', validation.saveTeamMem, teamController.deleteTeamMem);
+router.get('/', usersController.getAll);
+router.get('/:id', usersController.getSingle);
+router.post('/', validation.saveUser,usersController.createUser);
+router.put('/:id', validation.saveUser, usersController.updateUser);
+router.delete('/:id', validation.saveUser, usersController.deleteUser);
 
 
 module.exports = router;

@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 const getAll = async (req, res) => {
     //#swagger.tags=['Team Members']
     //#swagger.summary= Get all the team members
-    const result = await mongodb.getDatabase().db('system-project').collection('team-members').find();
+    const result = await mongodb.getDatabase().db('library').collection('loans').find();
     result.toArray().then((teamMem) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(teamMem);
@@ -18,7 +18,7 @@ const getSingle = async (req, res) => {
         res.status(400).json('Must use a valid team member id to find a team member.');
       }
     const teamMemId = new ObjectId(req.params.id)
-    const result = await mongodb.getDatabase().db('system-project').collection('team-members').find({_id:teamMemId});
+    const result = await mongodb.getDatabase().db('library').collection('loans').find({_id:teamMemId});
     result.toArray().then((TeamMem) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(TeamMem[0]);
@@ -36,7 +36,7 @@ const createTeamMem = async (req, res) => {
         skills : req.body.skills,
         projects : req.body.projects
         };
-    const response = await mongodb.getDatabase().db('system-project').collection('team-members').insertOne(teamMem);
+    const response = await mongodb.getDatabase().db('library').collection('loans').insertOne(teamMem);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
@@ -59,7 +59,7 @@ const updateTeamMem = async (req, res) => {
         skills : req.body.skills,
         projects : req.body.projects
         };
-    const response = await mongodb.getDatabase().db('system-project').collection('team-members').replaceOne({_id:teamMemId}, teamMem);
+    const response = await mongodb.getDatabase().db('library').collection('loans').replaceOne({_id:teamMemId}, teamMem);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -74,7 +74,7 @@ const deleteTeamMem = async (req, res) => {
         res.status(400).json('Must use a valid team member id to delete a team member.');
       }
     const teamMemId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db('system-project').collection('team-members').deleteOne({_id:teamMemId}, true);
+    const response = await mongodb.getDatabase().db('library').collection('loans').deleteOne({_id:teamMemId}, true);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
