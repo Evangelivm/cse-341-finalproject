@@ -46,6 +46,28 @@ const saveTask = (req, res, next) => {
     });
   };
 
+  const saveTeamMem = (req, res, next) => {
+    const validationRule = {
+      name: 'required|string',
+      role: 'required|string',
+      email: 'required|email',
+      phone: 'required|string',
+      skills : "required|array",
+      projects : "required|array"
+    };
+    validator(req.body, validationRule, {}, (err, status) => {
+      if (!status) {
+        res.status(412).send({
+          success: false,
+          message: 'Validation failed',
+          data: err
+        });
+      } else {
+        next();
+      }
+    });
+  };
+
 
   const saveTeamMem = (req, res, next) => {
     const validationRule = {
