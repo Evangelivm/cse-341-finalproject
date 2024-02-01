@@ -2,90 +2,88 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-    //#swagger.tags=['Team Members']
-    //#swagger.summary= Get all the team members
+    //#swagger.tags=['Loans']
+    //#swagger.summary= Get all the loans
     const result = await mongodb.getDatabase().db('library').collection('loans').find();
-    result.toArray().then((teamMem) => {
+    result.toArray().then((loan) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(teamMem);
+        res.status(200).json(loan);
     });
 };
 
 const getSingle = async (req, res) => {
-    //#swagger.tags=['Team Members']
-    //#swagger.summary= Get a team member by id
+    //#swagger.tags=['Loans']
+    //#swagger.summary= Get a loan by id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid team member id to find a team member.');
+        res.status(400).json('Must use a valid loan id to find a loan.');
       }
-    const teamMemId = new ObjectId(req.params.id)
-    const result = await mongodb.getDatabase().db('library').collection('loans').find({_id:teamMemId});
-    result.toArray().then((TeamMem) => {
+    const loanId = new ObjectId(req.params.id)
+    const result = await mongodb.getDatabase().db('library').collection('loans').find({_id:loanId});
+    result.toArray().then((loan) => {
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(TeamMem[0]);
+        res.status(200).json(loan[0]);
     });
 };
 
-const createTeamMem = async (req, res) => {
-    //#swagger.tags=['Team Members']
-    //#swagger.summary= Create a new team member
-    const teamMem = {
-        name : req.body.name,
-        role : req.body.role,
-        email : req.body.email,
-        phone : req.body.phone,
-        skills : req.body.skills,
-        projects : req.body.projects
+const createLoan = async (req, res) => {
+    //#swagger.tags=['Loans']
+    //#swagger.summary= Create a new loan
+    const loan = {
+        user : req.body.user,
+        book : req.body.book,
+        loan_date : req.body.loan_date,
+        due_date : req.body.due_date,
+        status : req.body.status
         };
-    const response = await mongodb.getDatabase().db('library').collection('loans').insertOne(teamMem);
+    const response = await mongodb.getDatabase().db('library').collection('loans').insertOne(loan);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while creating the team member.')
+        res.status(500).json(response.error || 'Some error courred while creating the loan.')
     }
 };
 
-const updateTeamMem = async (req, res) => {
-    //#swagger.tags=['Team Members']
-    //#swagger.summary= Modify a team member by id
+const updateLoan = async (req, res) => {
+    //#swagger.tags=['Loans']
+    //#swagger.summary= Modify a loan by id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid team member id to update a team member.');
+        res.status(400).json('Must use a valid loan id to update a loan.');
       }
-    const teamMemId = new ObjectId(req.params.id);
-    const teamMem = {
-        name : req.body.name,
-        role : req.body.role,
-        email : req.body.email,
-        phone : req.body.phone,
-        skills : req.body.skills,
-        projects : req.body.projects
+    const loanId = new ObjectId(req.params.id);
+    const loan = {
+        user : req.body.user,
+        book : req.body.book,
+        loan_date : req.body.loan_date,
+        due_date : req.body.due_date,
+        status : req.body.status
         };
-    const response = await mongodb.getDatabase().db('library').collection('loans').replaceOne({_id:teamMemId}, teamMem);
+    const response = await mongodb.getDatabase().db('library').collection('loans').replaceOne({_id:loanId}, loan);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while updating the team member.')
+        res.status(500).json(response.error || 'Some error courred while updating the loan.')
     }
 };
 
-const deleteTeamMem = async (req, res) => {
-    //#swagger.tags=['Team Members']
-    //#swagger.summary= Delete a team member by id
+const deleteLoan = async (req, res) => {
+    //#swagger.tags=['Loans']
+    //#swagger.summary= Delete a loan by id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid team member id to delete a team member.');
+        res.status(400).json('Must use a valid loan id to delete a loan.');
       }
-    const teamMemId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db('library').collection('loans').deleteOne({_id:teamMemId}, true);
+    const loanId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db('library').collection('loans').deleteOne({_id:loanId}, true);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while deleting the team member.')
+        res.status(500).json(response.error || 'Some error courred while deleting the loan.')
     }
 };
 
 module.exports = {
     getAll,
     getSingle,
-    createTeamMem,
-    updateTeamMem,
-    deleteTeamMem
+    createLoan,
+    updateLoan,
+    deleteLoan
 }
