@@ -41,7 +41,7 @@ const createBook = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while creating the book.')
+        res.status(500).json(response.error || 'Some error ocurred while creating the book.')
     }
 };
 
@@ -65,7 +65,7 @@ const updateBook = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while updating the book.')
+        res.status(500).json(response.error || 'Some error ocurred while updating the book.')
     }
 };
 
@@ -80,7 +80,7 @@ const deleteBook = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while deleting the book.')
+        res.status(500).json(response.error || 'Some error ocurred while deleting the book.')
     }
 };
 
