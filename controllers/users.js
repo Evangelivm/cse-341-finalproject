@@ -30,10 +30,10 @@ const createUser = async (req, res) => {
     //#swagger.summary= Create a new user
     const user = {
         name : req.body.name,
-        email : req.body.role,
-        address : req.body.email,
-        borrowed_books : req.body.phone,
-        loan_history : req.body.skills
+        email : req.body.email,
+        address : req.body.address,
+        borrowed_books : req.body.borrowed_books,
+        loan_history : req.body.loan_history
         };
     const response = await mongodb.getDatabase().db('library').collection('users').insertOne(user);
     if (response.acknowledged) {
@@ -52,10 +52,10 @@ const updateUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const user = {
         name : req.body.name,
-        email : req.body.role,
-        address : req.body.email,
-        borrowed_books : req.body.phone,
-        loan_history : req.body.skills
+        email : req.body.email,
+        address : req.body.address,
+        borrowed_books : req.body.borrowed_books,
+        loan_history : req.body.loan_history
         };
     const response = await mongodb.getDatabase().db('library').collection('users').replaceOne({_id:userId}, user);
     if (response.modifiedCount > 0) {
