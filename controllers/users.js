@@ -39,7 +39,7 @@ const createUser = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while creating the user.')
+        res.status(500).json(response.error || 'Some error ocurred while creating the user.')
     }
 };
 
@@ -61,7 +61,7 @@ const updateUser = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while updating the user.')
+        res.status(500).json(response.error || 'Some error ocurred while updating the user.')
     }
 };
 
@@ -76,7 +76,7 @@ const deleteUser = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while deleting the user.')
+        res.status(500).json(response.error || 'Some error ocurred while deleting the user.')
     }
 };
 

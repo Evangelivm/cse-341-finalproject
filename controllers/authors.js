@@ -39,7 +39,7 @@ const createAuthor = async (req, res) => {
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while creating the author.')
+        res.status(500).json(response.error || 'Some error ocurred while creating the author.')
     }
 };
 
@@ -47,7 +47,7 @@ const updateAuthor = async (req, res) => {
     //#swagger.tags=['Authors']
     //#swagger.summary= Modify a author by id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to update a author.');
+        res.status(400).json('Must use a valid author id to update an author.');
       }
     const authorsId = new ObjectId(req.params.id);
     const authors = {
@@ -61,7 +61,7 @@ const updateAuthor = async (req, res) => {
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while updating the author.')
+        res.status(500).json(response.error || 'Some error ocurred while updating the author.')
     }
 };
 
@@ -69,14 +69,14 @@ const deleteAuthor = async (req, res) => {
     //#swagger.tags=['Authors']
     //#swagger.summary= Delete a author by id
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid author id to delete a author.');
+        res.status(400).json('Must use a valid author id to delete an author.');
       }
     const authorsId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db('library').collection('authors').deleteOne({_id:authorsId}, true);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || 'Some error courred while deleting the author.')
+        res.status(500).json(response.error || 'Some error ocurred while deleting the author.')
     }
 };
 
