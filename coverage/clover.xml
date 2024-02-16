@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708121575407" clover="3.2.0">
-  <project timestamp="1708121575408" name="All files">
+<coverage generated="1708125695197" clover="3.2.0">
+  <project timestamp="1708125695198" name="All files">
     <metrics statements="305" coveredstatements="161" conditionals="94" coveredconditionals="8" methods="56" coveredmethods="15" elements="455" coveredelements="184" complexity="0" loc="305" ncloc="305" packages="6" files="15" classes="15"/>
     <package name="cse-341-finalproject">
       <metrics statements="33" coveredstatements="24" conditionals="6" coveredconditionals="3" methods="9" coveredmethods="3"/>
@@ -16,10 +16,10 @@
         <line num="8" count="1" type="stmt"/>
         <line num="10" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="22" count="10" type="stmt"/>
-        <line num="23" count="10" type="stmt"/>
-        <line num="27" count="10" type="stmt"/>
-        <line num="31" count="10" type="stmt"/>
+        <line num="22" count="18" type="stmt"/>
+        <line num="23" count="18" type="stmt"/>
+        <line num="27" count="18" type="stmt"/>
+        <line num="31" count="18" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
@@ -251,8 +251,8 @@
       <file name="authenticate.js" path="D:\recuperacion\Databases\Web Services\cse-341-finalproject\middleware\authenticate.js">
         <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="6" type="cond" truecount="1" falsecount="1"/>
-        <line num="3" count="6" type="stmt"/>
+        <line num="2" count="14" type="cond" truecount="1" falsecount="1"/>
+        <line num="3" count="14" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
       </file>
