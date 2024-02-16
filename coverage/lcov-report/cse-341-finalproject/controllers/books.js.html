@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20.51% </span>
+                <span class="strong">46.15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/39</span>
+                <span class='fraction'>18/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">5.55% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>1/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20.51% </span>
+                <span class="strong">46.15% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/39</span>
+                <span class='fraction'>18/39</span>
             </div>
         
             
@@ -161,24 +161,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,27 +250,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 &nbsp;
-const getAll = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+const getAll = async (req, res) =&gt; {
     //#swagger.tags=['Books']
     //#swagger.summary= Get all the books
-    const result = <span class="cstat-no" title="statement not covered" >await mongodb.getDatabase().db('library').collection('books').find();</span>
-<span class="cstat-no" title="statement not covered" >    result.toArray().then(<span class="fstat-no" title="function not covered" >(b</span>ooks) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        res.setHeader('Content-Type', 'application/json');</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json(books);</span>
+    const result = await mongodb.getDatabase().db('library').collection('books').find();
+    result.toArray().then((books) =&gt; {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(books);
     });
 };
 &nbsp;
-const getSingle = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+const getSingle = async (req, res) =&gt; {
     //#swagger.tags=['Books']
     //#swagger.summary= Get a book by id
-<span class="cstat-no" title="statement not covered" >    if (!ObjectId.isValid(req.params.id)) {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!ObjectId.isValid(req.params.id)) {
 <span class="cstat-no" title="statement not covered" >        res.status(400).json('Must use a valid book id to find a book.');</span>
       }
-    const booksId = <span class="cstat-no" title="statement not covered" >new ObjectId(req.params.id)</span>
-    const result = <span class="cstat-no" title="statement not covered" >await mongodb.getDatabase().db('library').collection('books').find({_id:booksId});</span>
-<span class="cstat-no" title="statement not covered" >    result.toArray().then(<span class="fstat-no" title="function not covered" >(b</span>ooks) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        res.setHeader('Content-Type', 'application/json');</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json(books[0]);</span>
+    const booksId = new ObjectId(req.params.id)
+    const result = await mongodb.getDatabase().db('library').collection('books').find({_id:booksId});
+    result.toArray().then((books) =&gt; {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(books[0]);
     });
 };
 &nbsp;
@@ -346,7 +346,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-02-15T00:13:46.057Z
+                at 2024-02-16T22:12:55.340Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
